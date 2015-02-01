@@ -14,12 +14,16 @@ import static org.junit.Assert.assertTrue;
  */
 public class BusinessLogicITTest {
 
-    private static final String EXTENSION = PropertySingleton.getInstance().getProperties().getProperty("csv.extension").trim();
+    private static final String EXTENSION   = PropertySingleton.getInstance().getProperties().getProperty("csv.extension").trim();
+    private static final String BERLIN      = "BERLIN";
+    private static final String LOS_ANGELES = "LOS ANGELES";
+    private static final String XYZ         = "XYZ";
 
     private BusinessLogic logic;
-    private File          outputBerlin = new File("BERLIN." + EXTENSION);
-    private File          outputLA     = new File("LOS_ANGELES." + EXTENSION);
-    private File          outputXYZ    = new File("XYZ." + EXTENSION);
+
+    private File          outputBerlin = new File(BERLIN + "." + EXTENSION);
+    private File          outputLA     = new File("LOS_ANGELES." + EXTENSION); // spaces in names get replaced
+    private File          outputXYZ    = new File(XYZ + "." + EXTENSION);
 
     @Before
     public void setUp() {
@@ -49,12 +53,11 @@ public class BusinessLogicITTest {
     @Test
     public void testExecuteSuccess() {
 
-
-        logic.execute("BERLIN");
+        logic.execute(BERLIN);
 
         assertTrue(outputBerlin.exists());
 
-        logic.execute("LOS ANGELES");  // check for spaces in names
+        logic.execute(LOS_ANGELES);  // check for spaces in names
 
         assertTrue(outputLA.exists());
     }
@@ -62,7 +65,7 @@ public class BusinessLogicITTest {
     @Test
     public void testExecuteFail() {
 
-        logic.execute("XYZ");
+        logic.execute(XYZ);
 
         assertFalse(outputXYZ.exists());   // no file should be created
     }
