@@ -68,6 +68,7 @@
 							<goal>shade</goal>
 						</goals>
 						<configuration>
+                            <finalName>GoEuroTest</finalName>
 							<shadedArtifactAttached>true</shadedArtifactAttached>
 							<!-- configures the suffix name for the executable jar here it will
 								be '<project.artifact>-<project.version>-executable.jar' -->

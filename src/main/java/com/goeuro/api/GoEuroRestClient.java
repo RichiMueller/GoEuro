@@ -63,7 +63,8 @@ public class GoEuroRestClient {
         }
 
         // More validation could be done here (i.e. catching HTTP error codes), but the result is basically the same
-        // without. An exception is thrown and we don't write a csv file, so for now we leave it as it is.
+        // without. An exception is thrown and we don't write a csv file. No requirements have been specified,
+        // so for now we leave it as it is.
         List<City> cityData = client.target(endpoint)
                                     .path(encodedCity)
                                     .request()
