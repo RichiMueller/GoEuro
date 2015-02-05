@@ -1,14 +1,16 @@
-# To build:
+# GoEuro Dev Test
+
+## To build (Maven required):
 
 mvn clean install
 
-# To execute:
+## To execute:
 
-java -jar target/GoEuroTest.jar "Los Angeles"
-java -jar target/GoEuroTest.jar BERLIN
-java -jar target/GoEuroTest.jar BERLIN SHANGHAI "NEW YORK"
+* java -jar target/GoEuroTest.jar "Los Angeles"
+* java -jar target/GoEuroTest.jar BERLIN
+* java -jar target/GoEuroTest.jar BERLIN SHANGHAI "NEW YORK"
 
-# To configure:
+## To configure:
 
 Change file src/main/resources/META-INF/config.properties
 
