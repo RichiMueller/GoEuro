@@ -51,6 +51,27 @@ public class PropertySingleton {
             System.out.println("Failed to load properties '" + CONFIG_FILE + "'.");
             throw new RuntimeException("Configuration could not be loaded.", ioe); // no sense to continue from here
         }
+
+        // some basic file validation, in case someone messes with the property file
+        if (!validate()) {
+            // no sense to continue from here
+            throw new RuntimeException("Configuration could not be loaded. Mandatory keys are missing. " +
+                                       "Required keys are: 'rest.endpoint', 'rest.charset', csv.separator', " +
+                                       "'csv.charset', 'csv.extension', 'csv.quote', 'csv.path'.");
+
+        }
+    }
+
+    /**
+     * Validates if all required keys are present in the configuration file.
+     *
+     * @return true if the property file contains all mandatory keys, false otherwise.
+     */
+    private boolean validate() {
+        return properties.containsKey("rest.endpoint") && properties.containsKey("rest.charset") &&
+               properties.containsKey("csv.separator") && properties.containsKey("csv.charset") &&
+               properties.containsKey("csv.extension") && properties.containsKey("csv.quote") &&
+               properties.containsKey("csv.path");
     }
 
     /** Returns the loaded properties */

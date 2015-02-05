@@ -12,14 +12,16 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * Wrapper for the rest client.
  */
 public class GoEuroRestClient {
 
-    private static final String CHARSET   = PropertySingleton.getInstance().getProperties().getProperty("rest.charset").trim();
-    private static final String ENDPOINT = PropertySingleton.getInstance().getProperties().getProperty("rest.endpoint").trim();
+    private static final Properties PROPERTIES = PropertySingleton.getInstance().getProperties();
+    private static final String     CHARSET    = PROPERTIES.getProperty("rest.charset").trim();
+    private static final String     ENDPOINT   = PROPERTIES.getProperty("rest.endpoint").trim();
 
     // client is thread-safe
     private Client client = ClientBuilder.newClient().register(JacksonFeature.class);

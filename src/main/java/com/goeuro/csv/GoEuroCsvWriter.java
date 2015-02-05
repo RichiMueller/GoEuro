@@ -8,17 +8,19 @@ import com.goeuro.entity.City;
 
 import java.io.File;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * Wrapper for the csv writer.
  */
 public class GoEuroCsvWriter {
 
-    private static final String QUOTE     = PropertySingleton.getInstance().getProperties().getProperty("csv.quote").trim();
-    private static final String PATH      = PropertySingleton.getInstance().getProperties().getProperty("csv.path").trim();
-    private static final String EXTENSION = PropertySingleton.getInstance().getProperties().getProperty("csv.extension").trim();
-    private static final String CHARSET   = PropertySingleton.getInstance().getProperties().getProperty("csv.charset").trim();
-    private static final String SEPARATOR = PropertySingleton.getInstance().getProperties().getProperty("csv.separator").trim();
+    private static final Properties PROPERTIES = PropertySingleton.getInstance().getProperties();
+    private static final String     QUOTE      = PROPERTIES.getProperty("csv.quote").trim();
+    private static final String     PATH       = PROPERTIES.getProperty("csv.path").trim();
+    private static final String     EXTENSION  = PROPERTIES.getProperty("csv.extension").trim();
+    private static final String     CHARSET    = PROPERTIES.getProperty("csv.charset").trim();
+    private static final String     SEPARATOR  = PROPERTIES.getProperty("csv.separator").trim();
 
     // csv writer doesn't need to be closed according to documentation
     private static final CSV CSV_WRITER = CSV.separator(SEPARATOR.charAt(0))

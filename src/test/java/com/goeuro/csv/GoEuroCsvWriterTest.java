@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -21,13 +22,14 @@ import static org.junit.Assert.assertTrue;
  */
 public class GoEuroCsvWriterTest {
 
-    private static final String EXTENSION = PropertySingleton.getInstance().getProperties().getProperty("csv.extension").trim();
-    private static final String CHARSET   = PropertySingleton.getInstance().getProperties().getProperty("csv.charset").trim();
-    private static final String QUOTE     = PropertySingleton.getInstance().getProperties().getProperty("csv.quote").trim();
-    private static final String SEPARATOR = PropertySingleton.getInstance().getProperties().getProperty("csv.separator").trim();
-    private static final String SEP       = File.separator;
-    private static final File   CSV_OK    = new File("target" + SEP + "test-classes" + SEP + "testdata" + SEP + "BerlinTest.csv");
-    private static final File   CSV_SC    = new File("target" + SEP + "test-classes" + SEP + "testdata" + SEP + "CharactersTest.csv");
+    private static final Properties PROPERTIES = PropertySingleton.getInstance().getProperties();
+    private static final String     EXTENSION  = PROPERTIES.getProperty("csv.extension").trim();
+    private static final String     CHARSET    = PROPERTIES.getProperty("csv.charset").trim();
+    private static final String     QUOTE      = PROPERTIES.getProperty("csv.quote").trim();
+    private static final String     SEPARATOR  = PROPERTIES.getProperty("csv.separator").trim();
+    private static final String     SEP        = File.separator;
+    private static final File       CSV_OK     = new File("target" + SEP + "test-classes" + SEP + "testdata" + SEP + "BerlinTest.csv");
+    private static final File       CSV_SC     = new File("target" + SEP + "test-classes" + SEP + "testdata" + SEP + "CharactersTest.csv");
 
     private GoEuroCsvWriter goEuroCsvWriter = new GoEuroCsvWriter();
     private File            outputBerlin    = new File("Berlin." + EXTENSION);
